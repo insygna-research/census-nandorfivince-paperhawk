@@ -26,3 +26,8 @@ tags:
   - "insygna-census"
   - "legal"
   - "python"
+
+# Insygna: the Dockerfile runs Streamlit on 7860 (--server.port=7860, for HF Spaces)
+# and ignores PORT; docker-compose.yml maps 8501, which nothing listens on.
+runtime:
+  app_port: 7860
