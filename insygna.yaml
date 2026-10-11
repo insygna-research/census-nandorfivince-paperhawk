@@ -31,3 +31,11 @@ tags:
 # and ignores PORT; docker-compose.yml maps 8501, which nothing listens on.
 runtime:
   app_port: 7860
+
+# Insygna: the app is OOM-killed at the default 256Mi as soon as a Streamlit session
+# loads LangGraph + Chroma (idle it sits at ~50Mi), so give it room. CPU is left to
+# the platform default.
+resources:
+  memory:
+    request: "512Mi"
+    limit: "2Gi"
